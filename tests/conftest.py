@@ -25,7 +25,7 @@ def db_connection():
 @pytest.fixture(scope="session", autouse=True)
 def test_db_config():
     os.environ["DB_PATH"] = TEST_DB_PATH
-    init_db() # Initialize the test database before each test
+    init_db()  # Initialize the test database before each test
     yield
     if os.path.exists(TEST_DB_PATH):
         os.remove(TEST_DB_PATH)
