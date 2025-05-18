@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-buffering-system
+  namespace: api-buffering-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-buffering-system
+  template:
+    metadata:
+      labels:
+        app: api-buffering-system
+    spec:
+      containers:
+      - name: api
+        image: api-buffering-system:latest
+        imagePullPolicy: Never # Use local image
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: api-config
+        volumeMounts:
+        - name: db-storage
+          mountPath: /data
+      volumes:
+      - name: db-storage
+        emptyDir: {}

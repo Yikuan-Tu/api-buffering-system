@@ -6,11 +6,12 @@ sys.path.append(
 )  # Add parent directory to sys.path to reuse modules/pkgs in app/
 
 import requests
+import os
 import random
 from concurrent.futures import ThreadPoolExecutor
 from app.utils.config import BUFFER_SIZE
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = os.getenv("BASE_URL", "http://localhost:8000")
 FIRST_NAMES = ["John", "Jane", "Michael", "Emily", "David"]
 LAST_NAMES = ["Smith", "Johnson", "Williams", "Brown", "Jones"]
 

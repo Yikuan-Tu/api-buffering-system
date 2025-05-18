@@ -17,9 +17,9 @@ def client():
 
 @pytest.fixture
 def db_connection():
-    conn = get_connection()
-    yield conn
-    conn.close()
+    db_connection = get_connection()
+    yield db_connection
+    db_connection.close()
 
 
 @pytest.fixture(scope="session", autouse=True)

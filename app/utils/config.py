@@ -14,7 +14,7 @@ def get_env(key: str, default: Optional[str] = None) -> str:
     return value
 
 
-DB_PATH = Path(get_env("DB_PATH"))
+DB_PATH = Path(get_env("DB_PATH", "/data/database.db"))
 BUFFER_SIZE = int(get_env("BUFFER_SIZE", "100"))
 LOG_LEVEL = get_env("LOG_LEVEL", "INFO").upper()
 # Ensure data directory exists

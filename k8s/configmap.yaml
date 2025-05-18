@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+  namespace: api-buffering-system
+data:
+  DB_PATH: "/data/database.db"
+  BUFFER_SIZE: "100"
+  LOG_LEVEL: "INFO"
