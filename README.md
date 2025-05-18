@@ -103,7 +103,7 @@ python tests/test_submit.py
 minikube start --profile=dev-cluster
 
 # Build image in Minikube's Docker context
-eval $(minikube docker-env)
+eval $(minikube --profile=dev-cluster docker-env)
 docker build -t api-buffering-system:latest --target production .
 
 # Deploy to Kubernetes
@@ -113,7 +113,7 @@ kubectl apply -f k8s/
 # Access the service
 kubectl port-forward svc/api-buffering-system 8000:8000 -n api-buffering-system
 
-# Run load test script against cluster
+# In another terminal, run the load test script against cluster
 python tests/test_submit.py
 ```
 
