@@ -42,5 +42,7 @@ jobs:
           pip install -r requirements-dev.txt
 
       - name: Run pytest
+        env:
+          DB_PATH: ./tests/test.db
         run: |
           pytest tests/ -v
