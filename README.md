@@ -36,6 +36,11 @@ A FastAPI-based service that buffers person records in memory and flushes them t
 git clone https://github.com/Yikuan-Tu/api-buffering-system.git
 cd api-buffering-system
 
+# Create the .env file with the required environment variables
+echo "DB_PATH=./data/database.db
+BUFFER_SIZE=100
+LOG_LEVEL=INFO" > .env
+
 # Create and activate virtual environment
 python -m venv venv
 source venv/bin/activate  # Linux/MacOS
@@ -49,11 +54,6 @@ pip install -r requirements.txt -r requirements-dev.txt
 
 ### Method 1: Local Development
 ```bash
-# Create the .env file with the required environment variables
-echo "DB_PATH=./data/database.db
-BUFFER_SIZE=100
-LOG_LEVEL=INFO" > .env
-
 # Start the FastAPI server
 uvicorn app.main:app --reload
 
