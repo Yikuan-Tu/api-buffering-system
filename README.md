@@ -171,6 +171,6 @@ docker-compose down -v
 ### Kubernetes
 ```bash
 kubectl delete -f k8s/
-minikube stop
+minikube stop --profile=dev-cluster
 minikube delete --profile=dev-cluster
 ```
