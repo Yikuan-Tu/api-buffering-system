@@ -9,10 +9,11 @@ logger = logging.getLogger(__name__)
 
 buffer: Deque[Person] = deque(maxlen=BUFFER_SIZE)
 
+
 def flush_to_db():
     if not buffer:
         return
-    
+
     records = [(p.first_name, p.last_name) for p in buffer]
     try:
         inserted = batch_insert(records)
@@ -23,11 +24,11 @@ def flush_to_db():
     except Exception as e:
         logger.error(f"❌ Flush failed: {str(e)}")
         raise e
-  
+
 
 def buffer_data(people: List[Person]):
     buffer.extend(people)
-    
+
     if len(buffer) >= BUFFER_SIZE:
         logger.info("\n=== FLUSH TRIGGERED ===")
         logger.info(f"Flushing {len(buffer)} records to database...")

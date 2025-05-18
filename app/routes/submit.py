@@ -4,6 +4,7 @@ from app.utils.buffering import buffer_data
 
 router = APIRouter(prefix="/submit", tags=["submit"])
 
+
 @router.post("/", status_code=202)
 async def submit_data(payload: SubmitRequest):
     try:
