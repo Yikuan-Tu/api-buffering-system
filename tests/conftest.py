@@ -4,7 +4,7 @@ from fastapi.testclient import TestClient
 from sqlite3 import Connection
 from app.main import app
 from app.utils.buffering import buffer
-from app.utils.database import get_connection
+from app.utils.database import init_db, get_connection
 
 TEST_DB_PATH = "tests/test.db"
 
@@ -25,6 +25,7 @@ def db_connection():
 @pytest.fixture(scope="session", autouse=True)
 def test_db_config():
     os.environ["DB_PATH"] = TEST_DB_PATH
+    init_db() # Initialize the test database before each test
     yield
     if os.path.exists(TEST_DB_PATH):
         os.remove(TEST_DB_PATH)
