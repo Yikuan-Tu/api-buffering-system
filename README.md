@@ -49,6 +49,11 @@ pip install -r requirements.txt -r requirements-dev.txt
 
 ### Method 1: Local Development
 ```bash
+# Create the .env file with the required environment variables
+echo "DB_PATH=./data/database.db
+BUFFER_SIZE=100
+LOG_LEVEL=INFO" > .env
+
 # Start the FastAPI server
 uvicorn app.main:app --reload
 
