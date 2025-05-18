@@ -1,6 +1,6 @@
 
 # API Buffering System
-[![Lint and test](https://github.com/Yikuan-Tu/api-buffering-system/actions/workflows/test.yml/badge.svg)](https://github.com/Yikuan-Tu/api-buffering-system/actions/workflows/ci.yml)
+[![Lint and test](https://github.com/Yikuan-Tu/api-buffering-system/actions/workflows/ci.yml/badge.svg)](https://github.com/Yikuan-Tu/api-buffering-system/actions/workflows/ci.yml)
 
 A FastAPI-based service that buffers person records in memory and flushes them to SQLite when reaching a configurable buffer size (defaults to 100).
 
