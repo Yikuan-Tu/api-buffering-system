@@ -107,7 +107,7 @@ eval $(minikube docker-env)
 docker build -t api-buffering-system:latest --target production .
 
 # Deploy to Kubernetes
-kubectl create namespace api-buffering-system
+kubectl apply -f k8s/namespace.yaml
 kubectl apply -f k8s/
 
 # Access the service
