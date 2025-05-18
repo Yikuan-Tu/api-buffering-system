@@ -70,6 +70,7 @@ docker-compose up api
 
 # Access API at http://localhost:8000
 
+## In another terminal
 # Run test suite in container
 docker-compose run tests
 
@@ -87,7 +88,7 @@ docker run -p 8000:8000 api-buffering-system
 
 # Access API at http://localhost:8000
 
-# Run the load test script against container
+# In another terminal, run the load test script against container
 python tests/test_submit.py
 ```
 
@@ -101,13 +102,13 @@ eval $(minikube docker-env)
 docker build -t api-buffering-system:latest --target production .
 
 # Deploy to Kubernetes
+kubectl create namespace api-buffering-system
 kubectl apply -f k8s/
 
 # Access the service
-minikube service api-buffering-system -n api-buffering-system
-
-# Run test client against cluster
 kubectl port-forward svc/api-buffering-system 8000:8000 -n api-buffering-system
+
+# Run load test script against cluster
 python tests/test_submit.py
 ```
 
